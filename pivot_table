@@ -1,0 +1,29 @@
+import pandas as pd
+import numpy as np
+df = pd.read_csv(r'C:\Users\suppo\Downloads\Package_Receive_Report.csv.csv')
+
+
+# Assuming your DataFrame is 'df'
+pivot_table = pd.pivot_table(
+    df, 
+    index=['Mailbox'], 
+    values=['TRACKINGNUMBER'], 
+    aggfunc='count'
+)
+
+# Optional: Reset the index to make Mailbox a regular column
+pivot_table = pivot_table.reset_index()
+
+# Display the resulting table
+print(pivot_table)
+
+# Assuming your pivot table is named 'pivot_table'
+sorted_pivot_table = pivot_table.sort_values(
+    by='TRACKINGNUMBER',  # The column containing the counts
+    ascending=False        # Set to False to sort from largest to smallest
+)
+
+print(sorted_pivot_table)
+import pandas as pd 
+
+pd.set_option('display.max_rows', None)
